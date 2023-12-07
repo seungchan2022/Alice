@@ -27,7 +27,6 @@ let package = Package(
         "CombineExt",
       ],
       resources: [
-        .copy("Resources/Mock/dummy.json"),
       ]),
     .testTarget(
       name: "PlatformTests",

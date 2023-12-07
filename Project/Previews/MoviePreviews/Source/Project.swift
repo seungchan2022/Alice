@@ -12,5 +12,4 @@ let project: Project = .previewProject(
   ],
   dependencies: [
     .package(product: "Movie"),
-
   ])

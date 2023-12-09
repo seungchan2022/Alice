@@ -1,11 +1,18 @@
 import SwiftUI
+import Architecture
+import LinkNavigator
 
 @main
 struct AppMain: App {
 
+  @State private var viewModel = AppMainViewModel()
+  
   var body: some Scene {
     WindowGroup {
-      Text("App Main")
+      LinkNavigationView(
+        linkNavigator: viewModel.linkNavigator,
+        item: .init(path: Link.Movie.Path.test.rawValue))
+      .ignoresSafeArea()
     }
   }
 }

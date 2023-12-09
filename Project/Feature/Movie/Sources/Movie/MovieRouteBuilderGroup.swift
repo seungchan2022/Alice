@@ -1,7 +1,7 @@
 import Architecture
 import LinkNavigator
 
-public struct MovieRouteBuilderGroup<RootNavigator: LinkNavigatorFindLocationUsable & LinkNavigatorProtocol> {
+public struct MovieRouteBuilderGroup<RootNavigator: RootNavigatorType> {
   
   public init() { }
 }
@@ -9,7 +9,10 @@ public struct MovieRouteBuilderGroup<RootNavigator: LinkNavigatorFindLocationUsa
 extension MovieRouteBuilderGroup {
   public static var release: [RouteBuilderOf<RootNavigator>] {
     [
-      TestRouteBuilder.generate(),
+      MovieHomeRouteBuilder.generate(),
+      DiscoverRouteBuilder.generate(),
+      FanClubRouteBuilder.generate(),
+      MyListRouteBuilder.generate(),
     ]
   }
 }

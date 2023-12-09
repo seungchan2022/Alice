@@ -1,20 +1,21 @@
 import Architecture
 import LinkNavigator
 
-struct TestRouteBuilder<RootNavigator: RootNavigatorType> {
+struct MyListRouteBuilder<RootNavigator: RootNavigatorType> {
   static func generate() -> RouteBuilderOf<RootNavigator> {
-    let matchPath = "test"
+    let matchPath = Link.Movie.Path.myList.rawValue
     
     return .init(matchPath: matchPath) { navigator, item, diContainer -> RouteViewController? in
       guard let env: MovieEnvironmentUseable = diContainer.resolve() else { return .none }
       
       return DebugWrappingController(matchPath: matchPath) {
-        TestPage(store: .init(
-          initialState: TestStore.State(),
+        MyListPage(store: .init(
+          initialState: MyListStore.State(),
           reducer: {
-            TestStore(env: TestEnvLive(useCaseGroup: env))
+            MyListStore(env: MyListEnvLive(useCaseGroup: env))
           }))
       }
     }
   }
 }
+

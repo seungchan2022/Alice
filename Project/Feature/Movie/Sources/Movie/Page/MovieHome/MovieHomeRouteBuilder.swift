@@ -1,18 +1,18 @@
 import Architecture
 import LinkNavigator
 
-struct TestRouteBuilder<RootNavigator: RootNavigatorType> {
+struct MovieHomeRouteBuilder<RootNavigator: RootNavigatorType> {
   static func generate() -> RouteBuilderOf<RootNavigator> {
-    let matchPath = "test"
+    let matchPath = Link.Movie.Path.movieHome.rawValue
     
     return .init(matchPath: matchPath) { navigator, item, diContainer -> RouteViewController? in
       guard let env: MovieEnvironmentUseable = diContainer.resolve() else { return .none }
       
       return DebugWrappingController(matchPath: matchPath) {
-        TestPage(store: .init(
-          initialState: TestStore.State(),
+        MovieHomePage(store: .init(
+          initialState: MovieHomeStore.State(),
           reducer: {
-            TestStore(env: TestEnvLive(useCaseGroup: env))
+            MovieHomeStore(env: MovieHomeEnvLive(useCaseGroup: env))
           }))
       }
     }

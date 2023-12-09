@@ -1,20 +1,21 @@
 import Architecture
 import LinkNavigator
 
-struct TestRouteBuilder<RootNavigator: RootNavigatorType> {
+struct FanClubRouteBuilder<RootNavigator: RootNavigatorType> {
   static func generate() -> RouteBuilderOf<RootNavigator> {
-    let matchPath = "test"
+    let matchPath = Link.Movie.Path.fanClub.rawValue
     
     return .init(matchPath: matchPath) { navigator, item, diContainer -> RouteViewController? in
       guard let env: MovieEnvironmentUseable = diContainer.resolve() else { return .none }
       
       return DebugWrappingController(matchPath: matchPath) {
-        TestPage(store: .init(
-          initialState: TestStore.State(),
+        FanClubPage(store: .init(
+          initialState: FanClubStore.State(),
           reducer: {
-            TestStore(env: TestEnvLive(useCaseGroup: env))
+            FanClubStore(env: FanClubEnvLive(useCaseGroup: env))
           }))
       }
     }
   }
 }
+

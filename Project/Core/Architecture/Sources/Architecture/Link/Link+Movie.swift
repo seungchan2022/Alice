@@ -7,5 +7,9 @@ extension Link {
 extension Link.Movie {
   public enum Path: String, Equatable {
     case test
+    case movieHome
+    case discover
+    case fanClub
+    case myList
   }
 }

@@ -3,7 +3,7 @@ import Foundation
 import LinkNavigator
 import Movie
 
-struct AppRouteBuilderGroup<RootNavigator: LinkNavigatorFindLocationUsable & LinkNavigatorProtocol> {
+struct AppRouteBuilderGroup<RootNavigator: RootNavigatorType> {
   public var release: [RouteBuilderOf<RootNavigator>] {
     MovieRouteBuilderGroup.release
   }

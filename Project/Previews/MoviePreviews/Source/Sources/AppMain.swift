@@ -11,7 +11,7 @@ struct AppMain: App {
     WindowGroup {
       LinkNavigationView(
         linkNavigator: viewModel.linkNavigator,
-        item: .init(path: Link.Movie.Path.test.rawValue))
+        item: .init(path: Link.Movie.Path.discover.rawValue))
       .ignoresSafeArea()
     }
   }

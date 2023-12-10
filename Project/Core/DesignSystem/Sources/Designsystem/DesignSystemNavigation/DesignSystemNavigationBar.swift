@@ -31,9 +31,10 @@ extension DesignSystemNavigationBar: View {
           Button(action: { backAction() }) {
             DesignSystemIcon.back.image
               .resizable()
-              .frame(width: 20, height: 20)
+              .frame(width: 12, height: 18)
               .foregroundStyle(tintColor)
           }
+//          .frame(width: 50, height: 50)
         } else {
           EmptyView()
         }

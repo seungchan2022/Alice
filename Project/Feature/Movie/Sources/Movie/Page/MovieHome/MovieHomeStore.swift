@@ -24,6 +24,10 @@ extension MovieHomeStore: Reducer {
         return .concatenate(
           CancelID.allCases.map { .cancel(pageID: pageID, id: $0) })
         
+      case .routeToMovieDetail:
+        env.routeToMovieDetail()
+        return .none
+        
       case .routeToTabBarItem(let matchPath):
         env.routeToTabItem(matchPath)
         return .none
@@ -44,6 +48,8 @@ extension MovieHomeStore {
   enum Action: Equatable, BindableAction {
     case binding(BindingAction<State>)
     case teardown
+    
+    case routeToMovieDetail
     
     case routeToTabBarItem(String)
     

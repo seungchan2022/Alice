@@ -13,7 +13,8 @@ struct MovieDetailRouteBuilder<RootNavigator: RootNavigatorType> {
           initialState: MovieDetailStore.State(), 
           reducer: {
             MovieDetailStore(env: MovieDetailEnvLive(
-              useCaseGroup: env))
+              useCaseGroup: env,
+              navigator: navigator))
           }))
       }
     }

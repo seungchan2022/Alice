@@ -35,7 +35,13 @@ extension MovieHomePage: View {
               action: { }),
           ]),
         title: "Now Playing") {
-          Text("Movie Home Page")
+          VStack {
+            Text("Movie Home Page")
+            
+            Button(action: { viewStore.send(.routeToMovieDetail) }) {
+              Text("Go To Movie Detail")
+            }
+          }
         }
       
       TabNavigationComponent(

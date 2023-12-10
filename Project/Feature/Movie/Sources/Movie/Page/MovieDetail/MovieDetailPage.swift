@@ -19,6 +19,22 @@ extension MovieDetailPage {
 
 extension MovieDetailPage: View {
   var body: some View {
-    Text("Movie Detail Page")
+    VStack {
+      DesignSystemNavigation(
+        barItem: .init(
+          title: "Selected Movie Title",
+          backAction: { 
+            print("back")
+            viewStore.send(.routeToBack)
+          },
+          moreActionList: [
+            .init(image: DesignSystemIcon.plus.image, action: { })
+          ]),
+        title: "Selected Movie Title") {
+          Text("Selected Movie Detail Page")
+        }
+    }
+    .navigationTitle("")
+    .toolbar(.hidden, for: .navigationBar)
   }
 }

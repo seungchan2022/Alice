@@ -24,6 +24,10 @@ extension MovieDetailStore: Reducer {
         return .concatenate(
           CancelID.allCases.map { .cancel(pageID: pageID, id: $0) })
         
+      case .routeToBack:
+        env.routeToBack()
+        return .none
+        
       case .throwError(let error):
         print(error)
         return .none
@@ -40,6 +44,8 @@ extension MovieDetailStore {
   enum Action: Equatable, BindableAction {
     case binding(BindingAction<State>)
     case teardown
+    
+    case routeToBack
     
     case throwError(CompositeError)
   }

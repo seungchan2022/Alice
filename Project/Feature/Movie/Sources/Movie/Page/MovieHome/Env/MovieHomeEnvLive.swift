@@ -11,6 +11,17 @@ struct MovieHomeEnvLive {
 }
 
 extension MovieHomeEnvLive: MovieHomeEnvType {
+  var routeToMovieDetail: () -> Void {
+    {
+      navigator.backOrNext(
+        linkItem: .init(
+          path: Link.Movie.Path.movieDetail.rawValue,
+          items: ""),
+        isAnimated: true)
+    }
+  }
+  
+  
   var routeToTabItem: (String) -> Void {
     { path in
       guard path != Link.Movie.Path.movieHome.rawValue else { return }

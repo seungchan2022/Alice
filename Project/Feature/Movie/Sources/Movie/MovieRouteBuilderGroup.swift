@@ -10,6 +10,7 @@ extension MovieRouteBuilderGroup {
   public static var release: [RouteBuilderOf<RootNavigator>] {
     [
       MovieHomeRouteBuilder.generate(),
+      MovieDetailRouteBuilder.generate(),
       DiscoverRouteBuilder.generate(),
       FanClubRouteBuilder.generate(),
       MyListRouteBuilder.generate(),

@@ -11,7 +11,6 @@ struct FanClubPage {
     self.store = store
     self.viewStore = ViewStore(store, observe: { $0 })
   }
-  
 }
 
 extension FanClubPage { 
@@ -23,10 +22,16 @@ extension FanClubPage {
 extension FanClubPage: View {
   var body: some View {
     VStack {
+      
       DesignSystemNavigation(
         barItem: .init(title: "Fan Club"),
         title: "Fan Club") {
-          Text("Fan Club Page")
+          ForEach(0..<50) { item in
+            Text("\(item)")
+              .font(.title)
+              .foregroundStyle(.gray)
+          }
+          .frame(maxWidth: .infinity, alignment: .leading)
         }
       
       TabNavigationComponent(

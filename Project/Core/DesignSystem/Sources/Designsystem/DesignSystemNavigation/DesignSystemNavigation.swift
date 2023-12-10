@@ -37,13 +37,11 @@ extension DesignSystemNavigation: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 16)
             .padding(.vertical, 16)
-          
         }
         
         content
           .padding(.horizontal, 16)
       }
-      
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
   }

@@ -40,7 +40,7 @@ extension DesignSystemNavigationBar: View {
       }
       .overlay(alignment: .center) {
         Text(title ?? "")
-          .font(.system(size: 24, weight: .medium))
+          .font(.system(size: 20, weight: .medium))
           .foregroundStyle(tintColor)
       }
       .overlay(alignment: .trailing) {
@@ -50,7 +50,7 @@ extension DesignSystemNavigationBar: View {
               item.image
                 .resizable()
                 .foregroundStyle(tintColor)
-                .frame(width: 24, height: 24)
+                .frame(width: 24, height: 22)
             }
           }
         }

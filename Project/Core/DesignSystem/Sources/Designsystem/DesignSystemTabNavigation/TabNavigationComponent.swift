@@ -3,6 +3,11 @@ import SwiftUI
 public struct TabNavigationComponent {
   let viewState: ViewState
   let tapAction: (String) -> Void
+  
+  public init(viewState: ViewState, tapAction: @escaping (String) -> Void) {
+    self.viewState = viewState
+    self.tapAction = tapAction
+  }
 }
 
 extension TabNavigationComponent: View {
@@ -13,11 +18,12 @@ extension TabNavigationComponent: View {
           VStack {
             item.icon.image
               .resizable()
-              .frame(width: 36, height: 36)
+              .frame(width: 28, height: 28)
             Text(item.title)
-              .font(.system(size: 16))
+              .font(.system(size: 12))
           }
         }
+//        .frame(width: 50, height: 50)
         .foregroundStyle(Color.buttonColor(isActive: item.isActive))
         
         if viewState.itemList.last != item {
@@ -30,11 +36,11 @@ extension TabNavigationComponent: View {
 }
 
 extension TabNavigationComponent {
-  struct ViewState: Equatable {
+  public struct ViewState: Equatable {
     let activeMatchPath: String
     fileprivate let itemList: [ItemComponent]
     
-    init(activeMatchPath: String) {
+    public init(activeMatchPath: String) {
       self.activeMatchPath = activeMatchPath
       self.itemList = [
         .init(
@@ -64,8 +70,8 @@ extension TabNavigationComponent {
 
 fileprivate struct ItemComponent: Equatable, Identifiable {
   let title: String
-  let matchPath: String
-  let activeMatchPath: String
+  let matchPath: String // 각 tab의 matchPath
+  let activeMatchPath: String // tab이 활성화된 탭인지 식별하기 위해
   let icon: DesignSystemIcon
   
   var isActive: Bool {

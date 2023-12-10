@@ -12,7 +12,9 @@ struct MyListRouteBuilder<RootNavigator: RootNavigatorType> {
         MyListPage(store: .init(
           initialState: MyListStore.State(),
           reducer: {
-            MyListStore(env: MyListEnvLive(useCaseGroup: env))
+            MyListStore(env: MyListEnvLive(
+              useCaseGroup: env,
+              navigator: navigator))
           }))
       }
     }

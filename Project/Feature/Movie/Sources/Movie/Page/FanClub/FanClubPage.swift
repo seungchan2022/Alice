@@ -1,6 +1,7 @@
 import DesignSystem
 import SwiftUI
 import ComposableArchitecture
+import Architecture
 
 struct FanClubPage {
   private let store: StoreOf<FanClubStore>
@@ -13,11 +14,27 @@ struct FanClubPage {
   
 }
 
-extension FanClubPage { }
+extension FanClubPage { 
+  private var tabNaviagtionComponentViewState: TabNavigationComponent.ViewState {
+    .init(activeMatchPath: Link.Movie.Path.fanClub.rawValue)
+  }
+}
 
 extension FanClubPage: View {
   var body: some View {
-    Text("FanClubPage Page")
+    VStack {
+      DesignSystemNavigation(
+        barItem: .init(title: "Fan Club"),
+        title: "Fan Club") {
+          Text("Fan Club Page")
+        }
+      
+      TabNavigationComponent(
+        viewState: tabNaviagtionComponentViewState,
+        tapAction: { viewStore.send(.routeToTabBarItem($0) )})
+    }
+    .navigationTitle("")
+    .toolbar(.hidden, for: .navigationBar)
   }
 }
 

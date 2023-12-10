@@ -12,7 +12,9 @@ struct DiscoverRouteBuilder<RootNavigator: RootNavigatorType> {
         DiscoverPage(store: .init(
           initialState: DiscoverStore.State(), 
           reducer: {
-            DiscoverStore(env: DiscoverEnvLive(useCaseGroup: env))
+            DiscoverStore(env: DiscoverEnvLive(
+              useCaseGroup: env,
+              navigator: navigator))
           }))
       }
     }

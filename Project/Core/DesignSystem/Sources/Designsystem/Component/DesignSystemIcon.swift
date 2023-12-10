@@ -15,6 +15,8 @@ public enum DesignSystemIcon {
   case arrow
   case add
   case back
+  case sort
+  case plus
   
   public var image: Image {
     var image: Image {
@@ -45,6 +47,10 @@ public enum DesignSystemIcon {
         Image(systemName: "text.badge.plus")
       case .back:
         Image(systemName: "chevron.left")
+      case .sort:
+        Image(systemName: "line.3.horizontal.decrease.circle")
+      case .plus:
+        Image(systemName: "text.badge.plus")
       }
     }
     return image.renderingMode(.template)

@@ -1,6 +1,7 @@
 import DesignSystem
 import SwiftUI
 import ComposableArchitecture
+import Architecture
 
 struct DiscoverPage {
   private let store: StoreOf<DiscoverStore>
@@ -13,10 +14,28 @@ struct DiscoverPage {
   
 }
 
-extension DiscoverPage { }
+extension DiscoverPage {
+  private var tabNavigationComponentViewState: TabNavigationComponent.ViewState {
+    .init(activeMatchPath: Link.Movie.Path.discover.rawValue)
+  }
+}
 
 extension DiscoverPage: View {
   var body: some View {
-    Text("Discover Page")
+    
+    VStack {
+      DesignSystemNavigation(
+        title: "Discover") {
+          Text("Discover Page")
+        }
+      
+//      designsys
+      
+      TabNavigationComponent(
+        viewState: tabNavigationComponentViewState,
+        tapAction: { viewStore.send(.routeToTabBarItem($0) )})
+    }
+    .navigationTitle("")
+    .toolbar(.hidden, for: .navigationBar)
   }
 }

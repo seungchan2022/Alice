@@ -1,6 +1,7 @@
 import DesignSystem
 import SwiftUI
 import ComposableArchitecture
+import Architecture
 
 struct MyListPage {
   private let store: StoreOf<MyListStore>
@@ -13,11 +14,33 @@ struct MyListPage {
   
 }
 
-extension MyListPage { }
+extension MyListPage {
+  private var tabNavigationComponentViewState: TabNavigationComponent.ViewState {
+    .init(activeMatchPath: Link.Movie.Path.myList.rawValue)
+  }
+}
 
 extension MyListPage: View {
   var body: some View {
-    Text("MyList Page")
+    VStack {
+      DesignSystemNavigation(
+        barItem: .init(
+          title: "My List",
+          moreActionList: [
+            .init(
+              image: DesignSystemIcon.sort.image,
+              action: { })
+          ]),
+        title: "My List") {
+          Text("My List Page")
+        }
+      
+      TabNavigationComponent(
+        viewState: tabNavigationComponentViewState,
+        tapAction: { viewStore.send(.routeToTabBarItem($0) )})
+    }
+    .navigationTitle("")
+    .toolbar(.hidden, for: .navigationBar)
   }
 }
 

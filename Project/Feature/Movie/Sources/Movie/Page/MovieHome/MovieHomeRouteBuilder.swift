@@ -12,7 +12,9 @@ struct MovieHomeRouteBuilder<RootNavigator: RootNavigatorType> {
         MovieHomePage(store: .init(
           initialState: MovieHomeStore.State(),
           reducer: {
-            MovieHomeStore(env: MovieHomeEnvLive(useCaseGroup: env))
+            MovieHomeStore(env: MovieHomeEnvLive(
+              useCaseGroup: env,
+              navigator: navigator))
           }))
       }
     }

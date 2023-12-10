@@ -12,7 +12,9 @@ struct FanClubRouteBuilder<RootNavigator: RootNavigatorType> {
         FanClubPage(store: .init(
           initialState: FanClubStore.State(),
           reducer: {
-            FanClubStore(env: FanClubEnvLive(useCaseGroup: env))
+            FanClubStore(env: FanClubEnvLive(
+              useCaseGroup: env,
+              navigator: navigator))
           }))
       }
     }

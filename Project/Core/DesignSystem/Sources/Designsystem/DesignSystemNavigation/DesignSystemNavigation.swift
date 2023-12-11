@@ -36,7 +36,9 @@ extension DesignSystemNavigation: View {
             .foregroundStyle(tintColor)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 16)
-            .padding(.vertical, 16)
+//            .padding(.vertical, 16)
+        } else {
+          EmptyView()
         }
         
         content

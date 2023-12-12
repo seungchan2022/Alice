@@ -21,7 +21,7 @@ extension FanClubPage {
 
 extension FanClubPage: View {
   var body: some View {
-    VStack {
+    VStack(spacing: .zero) {
       
       DesignSystemNavigation(
         barItem: .init(title: "Fan Club"),
@@ -40,6 +40,7 @@ extension FanClubPage: View {
     }
     .navigationTitle("")
     .toolbar(.hidden, for: .navigationBar)
+    .ignoresSafeArea(.all, edges: .bottom)
   }
 }
 

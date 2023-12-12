@@ -18,12 +18,11 @@ extension TabNavigationComponent: View {
           VStack {
             item.icon.image
               .resizable()
-              .frame(width: 28, height: 28)
+              .frame(width: 25, height: 24)
             Text(item.title)
               .font(.system(size: 12))
           }
         }
-//        .frame(width: 50, height: 50)
         .foregroundStyle(Color.buttonColor(isActive: item.isActive))
         
         if viewState.itemList.last != item {
@@ -31,7 +30,10 @@ extension TabNavigationComponent: View {
         }
       }
     }
+    .padding(.top, 12)
     .padding(.horizontal, 20)
+    .padding(.bottom, WindowAppearance.safeArea.bottom)
+    .background(.green.opacity(0.3))
   }
 }
 

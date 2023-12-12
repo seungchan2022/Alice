@@ -40,7 +40,7 @@ extension MovieHomePage {
 
 extension MovieHomePage: View {
   var body: some View {
-    VStack(alignment: .leading) {
+    VStack(alignment: .leading, spacing: .zero) {
       DesignSystemNavigation(
         barItem: .init(
           title: "Now Playing",
@@ -77,16 +77,16 @@ extension MovieHomePage: View {
               LazyVStack {
                 ForEach(0..<10, id: \.self) { item in
                   HStack(spacing: 16) {
-                    //                    DesignSystemImage.image.image
-                    Rectangle()
-                      .fill(DesignSystemColor.label(.gray).color.opacity(0.3))
-                    //                      .resizable()
+                                        DesignSystemImage.image.image
+//                    Rectangle()
+//                      .fill(DesignSystemColor.label(.gray).color.opacity(0.3))
+                                          .resizable()
                       .frame(width: 80, height: 120)
                       .clipShape(RoundedRectangle(cornerRadius: 10))
-                    //                      .overlay {
-                    //                        RoundedRectangle(cornerRadius: 10).stroke(.gray, lineWidth: 1)
-                    //                      }
-                    //                      .shadow(radius: 10)
+                                          .overlay {
+                                            RoundedRectangle(cornerRadius: 10).stroke(.gray, lineWidth: 1)
+                                          }
+                                          .shadow(radius: 10)
                     
                     VStack(alignment: .leading, spacing: 8) {
                       Text(title)
@@ -151,6 +151,7 @@ extension MovieHomePage: View {
     }
     .navigationTitle("")
     .toolbar(.hidden, for: .navigationBar)
+    .ignoresSafeArea(.all, edges: .bottom)
   }
 }
 

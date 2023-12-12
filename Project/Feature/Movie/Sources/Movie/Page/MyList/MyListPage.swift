@@ -22,7 +22,7 @@ extension MyListPage {
 
 extension MyListPage: View {
   var body: some View {
-    VStack {
+    VStack(spacing: .zero) {
       DesignSystemNavigation(
         barItem: .init(
           title: "My List",
@@ -41,6 +41,7 @@ extension MyListPage: View {
     }
     .navigationTitle("")
     .toolbar(.hidden, for: .navigationBar)
+    .ignoresSafeArea(.all, edges: .bottom)
   }
 }
 

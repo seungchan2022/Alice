@@ -23,7 +23,7 @@ extension DiscoverPage {
 extension DiscoverPage: View {
   var body: some View {
     
-    VStack {
+    VStack(spacing: .zero) {
       DesignSystemNavigation(
         title: "Discover") {
           Text("Discover Page")
@@ -37,5 +37,6 @@ extension DiscoverPage: View {
     }
     .navigationTitle("")
     .toolbar(.hidden, for: .navigationBar)
+    .ignoresSafeArea(.all, edges: .bottom)
   }
 }

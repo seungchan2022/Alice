@@ -21,20 +21,44 @@ extension MovieHomePage {
     .init(activeMatchPath: Link.Movie.Path.movieHome.rawValue)
   }
   
-  private var title: String {
-    "트롤 밴드 투게더"
+  private var searchComponentViewState: SearchComponent.ViewState {
+    .init()
   }
   
-  private var voteAverage: Double {
-    7.2
-  }
-  
-  private var releaseDate: String {
-    "2023-11-17"
-  }
-  
-  private var overView: String {
-    "전 세계 모든 트롤을 열광케 했던 최고의 아이돌 그룹 ‘브로존’. 역대급 무대 실수와 형제 간의 불화로 결국 해체한 뒤, 모두에게 잊혀 간다. 그러던 어느 날, ‘브로존’의 황금막내 ‘브랜치’는 메인보컬 ‘플로이드’가 슈퍼스타 ‘벨벳’과 ‘비니어’에게 잡혀 재능을 빼앗기고 있다는 소식을 듣는다. 그를 구하기 위해서는 흩어져 있는 ‘브로존’을 재결합하고 완벽한 화음을 되찾아야 하는데… 12월, 가장 짜릿한 컴백 무대의 시작!"
+  private var ItemListComponentViewState: [ItemListComponent.ViewState] {
+    [
+      .init(
+        id: 1,
+        title: "트롤 밴드 투게더",
+        voteAverage: 7.2,
+        releaseDate: "2023-11-17",
+        overView:     "전 세계 모든 트롤을 열광케 했던 최고의 아이돌 그룹 ‘브로존’. 역대급 무대 실수와 형제 간의 불화로 결국 해체한 뒤, 모두에게 잊혀 간다. 그러던 어느 날, ‘브로존’의 황금막내 ‘브랜치’는 메인보컬 ‘플로이드’가 슈퍼스타 ‘벨벳’과 ‘비니어’에게 잡혀 재능을 빼앗기고 있다는 소식을 듣는다. 그를 구하기 위해서는 흩어져 있는 ‘브로존’을 재결합하고 완벽한 화음을 되찾아야 하는데… 12월, 가장 짜릿한 컴백 무대의 시작!"),
+      .init(
+        id: 2,
+        title: "레오",
+        voteAverage: 7.577,
+        releaseDate: "2023-11-17",
+        overView: "초등학교 마지막 해를 보내는 아이들. 이 모습을 교실에서 키우는 반려동물의 눈을 통해 바라본다. 성장 스토리를 담은 뮤지컬 코미디로 애덤 샌들러가 반려동물인 도마뱀의 목소리 연기를 선보인다."),
+      
+        .init(
+          id: 3,
+          title: "헝거게임: 노래하는 새와 뱀의 발라드",
+          voteAverage: 7.289,
+          releaseDate: "2023-11-17",
+          overView: "반란의 불씨를 잠재우기 위해 시작된 잔인한 서바이벌 헝거게임. 헝거게임 10회를 맞아 ‘멘토제’가 도입되고 ‘스노우’는 12구역의 소녀 ‘루시 그레이’의 멘토가 된다. 그는 몰락한 가문의 영광을 되찾기 위해 ‘루시 그레이’를 헝거게임에서 우승 시키려 수단과 방법을 가리지 않는데…"),
+      .init(
+        id: 4,
+        title: "더 마블스",
+        voteAverage: 6.555,
+        releaseDate: "2023-11-10",
+        overView: "강력한 힘으로 은하계를 수호하는 최강 히어로 캡틴 마블 캐럴 댄버스. 캡틴 마블의 오랜 친구의 딸이자, 빛의 파장을 조작하는 히어로 모니카 램보. 최애 히어로 캡틴 마블의 열렬한 팬인 미즈 마블 카말라 칸. 캡틴 마블에 대한 복수를 꿈꾸는 냉혹한 크리족 리더 다르-벤의 영향으로 세 명의 히어로는 능력을 사용할 때마다 서로의 위치가 뒤바뀌게 된다. 뜻하지 않게 우주와 지구를 넘나들게 되는 예측 불가하고 통제 불가한 상황 속, 다르-벤은 지구를 포함해 캡틴 마블이 고향이라고 부르는 수많은 행성을 모두 파멸시키려 하고, 이를 저지하기 위해 모인 팀 마블스는 하나로 힘을 모으는데…"),
+      .init(
+        id: 5,
+        title: "고지라-1.0",
+        voteAverage: 8.414,
+        releaseDate: "2023-12-01",
+        overView: ""),
+    ]
   }
 }
 
@@ -54,91 +78,19 @@ extension MovieHomePage: View {
           ]),
         title: "") {
           VStack {
-            HStack(spacing: 16) {
-              DesignSystemIcon.search.image
-                .resizable()
-                .frame(width: 18, height: 18)
-              
-              TextField(
-                "",
-                text: $search,
-                prompt: Text("Search any movies or person"))
-              .textFieldStyle(.roundedBorder)
-              .frame(height: 30)
-              .frame(maxWidth: .infinity)
-              .padding(.trailing, 24)
-            }   // 텍스트 필드 (서치)
+            SearchComponent(
+              viewState: searchComponentViewState,
+              search: $search)
             
             Divider()
               .padding(.vertical, 8)
             
-            // 무비 리스트 표현
             ScrollView {
               LazyVStack {
-                ForEach(0..<10, id: \.self) { item in
-                  HStack(spacing: 16) {
-                                        DesignSystemImage.image.image
-//                    Rectangle()
-//                      .fill(DesignSystemColor.label(.gray).color.opacity(0.3))
-                                          .resizable()
-                      .frame(width: 80, height: 120)
-                      .clipShape(RoundedRectangle(cornerRadius: 10))
-                                          .overlay {
-                                            RoundedRectangle(cornerRadius: 10).stroke(.gray, lineWidth: 1)
-                                          }
-                                          .shadow(radius: 10)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                      Text(title)
-                        .font(.system(size: 16))
-                        .foregroundStyle(DesignSystemColor.label(.ocher).color)
-                      
-                      HStack {
-                        Circle()
-                          .trim(from: .zero, to: CGFloat(voteAverage / 10))
-                          .stroke(
-                            DesignSystemColor.tint(.yellow).color,
-                            style: StrokeStyle(
-                              lineWidth: 1.5,
-                              lineCap: .round,
-                              lineJoin: .round,
-                              dash: [1, 2]))
-//                          .shadow(color: .red, radius: 10, x: 6, y: 6)
-                          
-                          .rotationEffect(.degrees(-90))
-                          .frame(width: 36, height: 36)
-                          
-                          .overlay {
-                            Text("\(Int(voteAverage * 10))%")
-                              .font(.system(size: 10))
-                              .foregroundStyle(DesignSystemColor.system(.black).color)
-                          }
-                        
-                        
-                        Text(releaseDate.formattedDate)
-                          .font(.system(size: 14))
-                          .foregroundStyle(DesignSystemColor.system(.black).color)
-                      }
-                      
-                      Text(overView)
-                        .font(.system(size: 16))
-                        .foregroundStyle(DesignSystemColor.label(.gray).color)
-                        .lineLimit(3)
-                    }
-                    
-                    DesignSystemIcon.arrow.image
-                      .resizable()
-                      .frame(width: 10, height: 12)
-                      .foregroundStyle(DesignSystemColor.label(.gray).color)
-                  }
-                  .frame(height: 140)
-                  .frame(maxWidth: .infinity)
-                  
-                  Divider()
-                    .padding(.leading, 88)
-                }
-                .onTapGesture {
-                  viewStore.send(.routeToMovieDetail)
+                ForEach(ItemListComponentViewState) { item in
+                  ItemListComponent(
+                    viewState: item,
+                    tapAction: { viewStore.send(.routeToMovieDetail) })
                 }
               }
             }
@@ -152,18 +104,5 @@ extension MovieHomePage: View {
     .navigationTitle("")
     .toolbar(.hidden, for: .navigationBar)
     .ignoresSafeArea(.all, edges: .bottom)
-  }
-}
-
-extension String {
-  fileprivate var formattedDate: String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    
-    guard let date = dateFormatter.date(from: self) else { return "" }
-    
-    let outputFormatter = DateFormatter()
-    outputFormatter.dateFormat = "MMM d, yyyy"
-    return outputFormatter.string(from: date)
   }
 }

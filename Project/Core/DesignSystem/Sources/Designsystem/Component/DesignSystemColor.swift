@@ -26,7 +26,7 @@ extension DesignSystemColor {
   public enum LabelChip: Equatable, CaseIterable {
     case gray
     case ocher
-    case sky
+    case greenSlate
     
     var color: Color {
       switch self {
@@ -34,8 +34,8 @@ extension DesignSystemColor {
         Asset.ColorChip.Label.labelGray.swiftUIColor
       case .ocher:
         Asset.ColorChip.Label.labelOcher.swiftUIColor
-      case .sky:
-        Asset.ColorChip.Label.labelSky.swiftUIColor
+      case .greenSlate:
+        Asset.ColorChip.Label.labelGreenSlate.swiftUIColor
       }
     }
     

@@ -27,8 +27,8 @@ internal enum Asset {
   internal enum ColorChip {
     internal enum Label {
       internal static let labelGray = ColorAsset(name: "LabelGray")
+      internal static let labelGreenSlate = ColorAsset(name: "LabelGreenSlate")
       internal static let labelOcher = ColorAsset(name: "LabelOcher")
-      internal static let labelSky = ColorAsset(name: "LabelSky")
     }
     internal enum Sysytem {
       internal static let systemBlack = ColorAsset(name: "SystemBlack")

@@ -25,7 +25,7 @@ extension DesignSystemNavigationBar {
 extension DesignSystemNavigationBar: View {
   public var body: some View {
     Rectangle()
-      .fill(.white)
+      .fill(.clear)
       .overlay(alignment: .leading) {
         if let backAction {
           Button(action: { backAction() }) {

@@ -15,7 +15,7 @@ extension MovieHomePage.ItemListComponent: View {
   var body: some View {
     VStack {
       HStack(spacing: 8) {
-        DesignSystemImage.image.image
+        viewState.poster
           .resizable()
           .frame(width: 80, height: 120)
           .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -84,8 +84,10 @@ extension MovieHomePage.ItemListComponent: View {
 
 extension MovieHomePage.ItemListComponent {
   struct ViewState: Equatable, Identifiable {
+    
     let id: Int
     let title: String
+    let poster: Image
     let voteAverage: Double
     let releaseDate: String
     let overView: String

@@ -28,6 +28,10 @@ extension MovieDetailStore: Reducer {
         env.routeToBack()
         return .none
         
+      case .routeToTabBarItem(let matchPath):
+        env.routeToTabItem(matchPath)
+        return .none
+                
       case .throwError(let error):
         print(error)
         return .none
@@ -46,6 +50,8 @@ extension MovieDetailStore {
     case teardown
     
     case routeToBack
+    
+    case routeToTabBarItem(String)
     
     case throwError(CompositeError)
   }

@@ -10,10 +10,17 @@ struct MovieDetailEnvLive {
   let navigator: RootNavigatorType
 }
 
-extension MovieDetailEnvLive: MovieDetailEnvType { 
+extension MovieDetailEnvLive: MovieDetailEnvType {
   var routeToBack: () -> Void {
     {
       navigator.back(isAnimated: true)
+    }
+  }
+  
+  var routeToTabItem: (String) -> Void {
+    { path in
+      guard path != Link.Movie.Path.movieHome.rawValue else { return }
+      navigator.replace(linkItem: .init(path: path), isAnimated: false)
     }
   }
 }

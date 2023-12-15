@@ -7,6 +7,8 @@ protocol MovieDetailEnvType {
   var mainQueue: AnySchedulerOf<DispatchQueue> { get }
   
   var routeToBack: () -> Void { get }
+  
+  var routeToTabItem: (String) -> Void { get }
 }
 
 extension MovieDetailEnvType { }

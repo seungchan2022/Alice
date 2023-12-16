@@ -410,10 +410,6 @@ extension MovieDetailPage: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.top, 24)
           }
-        
-        TabNavigationComponent(
-          viewState: tabNavigationComponentViewState,
-          tapAction: { viewStore.send(.routeToTabBarItem($0))})
       }
     }
     .navigationTitle("")
